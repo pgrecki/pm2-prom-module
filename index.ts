@@ -88,11 +88,12 @@ pmx.initModule(
 
         initLogger({ isDebug: moduleConfig.debug });
         startPm2Connect(moduleConfig);
-        startPromServer(DEFAULT_PREFIX, moduleConfig);
+        startPromServer(moduleConfig.prefix ?? DEFAULT_PREFIX, moduleConfig);
 
         pmx.configureModule({
             human_info: [
                 ['Status', 'Module enabled'],
+                ['Prefix', moduleConfig.prefix ?? DEFAULT_PREFIX],
                 ['Debug', moduleConfig.debug ? 'Enabled' : 'Disabled'],
                 [
                     'Aggregate apps metrics',
